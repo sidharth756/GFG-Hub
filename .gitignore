@@ -8,3 +8,11 @@ Thumbs.db
 
 # Large source icon (only sized icons are needed)
 assets/icons/icon.png
+
+# Internal tools — not part of the extension
+Automations/
+worker/
+
+# Secrets — never commit
+secrect.env
+*.env

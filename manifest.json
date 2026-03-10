@@ -12,7 +12,10 @@
   "host_permissions": [
     "https://practice.geeksforgeeks.org/*",
     "https://www.geeksforgeeks.org/*",
-    "https://api.github.com/*"
+    "https://api.github.com/*",
+    "https://*.workers.dev/*",
+    "http://localhost/*",
+    "http://jobs.hidencloud.com/*"
   ],
   "background": {
     "service_worker": "scripts/background.js"

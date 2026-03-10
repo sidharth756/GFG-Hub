@@ -861,7 +861,7 @@
 
   /** Extract difficulty, accuracy, points etc from the GFG page header */
   function getProblemMeta() {
-    const meta = { difficulty: '', accuracy: '', points: '', url: window.location.href };
+    const meta = { difficulty: '', accuracy: '', submissions: '', points: '', averageTime: '', url: window.location.href };
     // Difficulty badge
     const diffSelectors = [
       '[class*="difficulty"]', '[class*="Difficulty"]',
@@ -874,16 +874,20 @@
         if (t && t.length < 30) { meta.difficulty = t; break; }
       }
     }
-    // Accuracy + points — look for text patterns in the header area
+    // Accuracy, points, submissions, average time — scan header area
     const header = document.querySelector(
       '[class*="problems_header"], [class*="problemHeader"], [class*="ProblemHeader"]'
     );
     if (header) {
       const raw = (header.innerText || '');
-      const accM = raw.match(/Accuracy[:\s]+([\d.]+%?)/i);
-      if (accM) meta.accuracy = accM[1];
-      const ptM  = raw.match(/Points[:\s]+(\d+)/i);
-      if (ptM)  meta.points   = ptM[1];
+      const accM  = raw.match(/Accuracy[:\s]+([\d.]+%?)/i);
+      if (accM) meta.accuracy    = accM[1];
+      const ptM   = raw.match(/Points[:\s]+(\d+)/i);
+      if (ptM)  meta.points      = ptM[1];
+      const subM  = raw.match(/Submissions[:\s]+([\d.KkMm+]+)/i);
+      if (subM) meta.submissions = subM[1];
+      const avgM  = raw.match(/Average\s+Time[:\s]+([^\n]+)/i);
+      if (avgM) meta.averageTime = avgM[1].trim();
     }
     return meta;
   }

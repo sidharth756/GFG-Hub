@@ -17,7 +17,7 @@
 ## What it does
 
 - Detects when your GFG submission is **Accepted**
-- **Auto-pushes** your code to a GitHub repo called `GFG-solution`
+- **Auto-pushes** your code to a GitHub repo called `GFG-solutions`
 - Creates a folder per problem with your code + a `README.md`
 - Shows a **Push button** next to GFG's Submit button
 
@@ -37,7 +37,7 @@
 2. Enter your **GitHub Personal Access Token** (needs `repo` scope — [create one](https://github.com/settings/tokens/new?scopes=repo&description=GFGHub))
 3. Enter your **GitHub username** and click **Connect**
 
-A repo named `GFG-solution` is auto-created for you.
+A repo named `GFG-solutions` is auto-created for you.
 
 ---
 

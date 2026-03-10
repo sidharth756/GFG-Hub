@@ -1,5 +1,5 @@
 // ─── Constants ────────────────────────────────────────────────────────────────
-const REPO_NAME = 'GFG-solution';
+const REPO_NAME = 'GFG-solutions';
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 const $ = (id) => document.getElementById(id);
@@ -70,7 +70,7 @@ $('btn-save').addEventListener('click', async () => {
       throw new Error(`Token belongs to "${userJson.login}", not "${username}".`);
     }
 
-    // Ensure GFG-solution repo exists (create silently if missing)
+    // Ensure GFG-solutions repo exists (create silently if missing)
     await ensureRepoExists(token, userJson.login, REPO_NAME);
 
     // ── Save only token + username. repo is always REPO_NAME constant. ──
