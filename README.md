@@ -32,7 +32,7 @@
 
 1. **Download / clone this repo**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/gfghub.git
+   git clone https://github.com/sidharth756/GFG-Hub.git
    ```
 
 2. Open Chrome and go to `chrome://extensions/`
