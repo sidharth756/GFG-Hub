@@ -1,0 +1,10 @@
+# Dev tools
+generate-icons.js
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large source icon (only sized icons are needed)
+assets/icons/icon.png

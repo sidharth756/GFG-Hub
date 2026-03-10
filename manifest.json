@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "GFGHub",
+  "version": "1.0.0",
+  "description": "Automatically push your GeeksForGeeks solutions to a GitHub repository.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "tabs",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://practice.geeksforgeeks.org/*",
+    "https://www.geeksforgeeks.org/*",
+    "https://api.github.com/*"
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://practice.geeksforgeeks.org/*",
+        "https://www.geeksforgeeks.org/problems/*"
+      ],
+      "js": ["scripts/content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16":  "assets/icons/icon16.png",
+      "48":  "assets/icons/icon48.png",
+      "128": "assets/icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16":  "assets/icons/icon16.png",
+    "48":  "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

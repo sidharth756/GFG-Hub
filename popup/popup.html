@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GFGHub</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- ── Screen 1: Auth ──────────────────────────────────────── -->
+  <div id="screen-auth" class="screen">
+    <div class="logo-wrap">
+      <!-- GFG logo -->
+      <svg class="logo-gfg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="44" height="44" rx="8" fill="#2f8d46"/>
+        <text x="50%" y="57%" dominant-baseline="middle" text-anchor="middle"
+              font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#fff">GFG</text>
+      </svg>
+      <span class="arrow">→</span>
+      <!-- GitHub logo -->
+      <svg class="logo-gh" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="44" height="44" rx="8" fill="#24292e"/>
+        <path fill="#fff" fill-rule="evenodd" transform="translate(6,6)"
+          d="M16 0C7.16 0 0 7.16 0 16c0 7.07 4.58 13.06 10.94 15.18.8.15
+          1.09-.35 1.09-.77 0-.38-.01-1.64-.01-2.98-4.02.74-5.06-.98
+          -5.38-1.88-.18-.46-.96-1.88-1.64-2.26-.56-.3-1.36-1.04-.02-1.06
+          1.26-.02 2.16 1.16 2.46 1.64 1.44 2.42 3.74 1.74 4.66 1.32.14-1.04
+          .56-1.74 1.02-2.14-3.56-.4-7.28-1.78-7.28-7.9 0-1.74.62-3.18 1.64-4.3
+          -.16-.4-.72-2.04.16-4.24 0 0 1.34-.42 4.4 1.64 1.28-.36 2.64-.54
+          4-.54s2.72.18 4 .54c3.06-2.08 4.4-1.64 4.4-1.64.88 2.2.32 3.84.16
+          4.24 1.02 1.12 1.64 2.54 1.64 4.3 0 6.14-3.74 7.5-7.3 7.9.58.5
+          1.08 1.46 1.08 2.96 0 2.14-.02 3.86-.02 4.4 0 .42.28.94 1.1.78
+          C27.44 29.04 32 23.07 32 16 32 7.16 24.84 0 16 0z"/>
+      </svg>
+    </div>
+    <div class="app-name">GFGHub</div>
+    <div class="tagline">Auto-push your GFG solutions to GitHub</div>
+    <button id="btn-setup" class="btn btn-primary">Connect GitHub</button>
+  </div>
+
+  <!-- ── Screen 2: Setup ─────────────────────────────────────── -->
+  <div id="screen-setup" class="screen hidden">
+    <h2>GitHub Setup</h2>
+
+    <label for="input-token">
+      Personal Access Token
+      <a class="help-link"
+         href="https://github.com/settings/tokens/new?scopes=repo&description=GFGHub"
+         target="_blank">Create →</a>
+    </label>
+    <input id="input-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
+
+    <label for="input-username">GitHub Username</label>
+    <input id="input-username" type="text" placeholder="your-username" />
+
+    <label>Repository <span class="hint">(auto-created if missing)</span></label>
+    <div class="repo-info-row">
+      📁 Solutions will push to: <strong>GFG-solution</strong>
+    </div>
+
+    <div id="setup-error" class="error-msg hidden"></div>
+
+    <div class="btn-row">
+      <button id="btn-back-setup" class="btn btn-secondary">Back</button>
+      <button id="btn-save" class="btn btn-primary">Connect GitHub</button>
+    </div>
+  </div>
+
+  <!-- ── Screen 3: Dashboard ─────────────────────────────────── -->
+  <div id="screen-dashboard" class="screen hidden">
+    <div class="status-bar">
+      <span class="dot dot-green"></span>
+      <span id="dash-username" class="username-label">Connected</span>
+      <button id="btn-disconnect" class="btn-icon" title="Disconnect">✕</button>
+    </div>
+
+    <div class="repo-box">
+      📁 <a id="dash-repo-link" href="#" target="_blank">user/GFG-solution</a>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-box">
+        <span id="stat-total" class="stat-num">0</span>
+        <span class="stat-label">Pushes</span>
+      </div>
+      <div id="last-push-info" class="stat-box hidden">
+        <span id="stat-last" class="stat-num last-label">—</span>
+        <span class="stat-label">Last pushed</span>
+      </div>
+    </div>
+
+    <div id="last-push-name" class="last-info hidden"></div>
+    <div id="push-status" class="push-status hidden"></div>
+
+    <button id="btn-edit-settings" class="btn btn-secondary small-btn">Edit Settings</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
