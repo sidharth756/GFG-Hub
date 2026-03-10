@@ -685,7 +685,20 @@
     return m ? m[1] : null;
   }
 
+  /** Convert URL slug to readable title: "find-length-of-loop" → "Find Length Of Loop" */
+  function slugToTitle(slug) {
+    return slug
+      .split('-')
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ');
+  }
+
   function getProblemTitle() {
+    const slug = getProblemSlug();
+
+    // If any matched element contains these words it's a breadcrumb/nav element, not the title
+    const BAD_PATTERNS = /\b(easy|medium|hard|basic|c\+\+|java|python|javascript|sql|accuracy|submissions?|solution)\b/i;
+
     const selectors = [
       '[class*="ProblemPage"] h1',
       '[class*="problem-statement"] h1',
@@ -700,14 +713,16 @@
     ];
     for (const s of selectors) {
       const el = document.querySelector(s);
-      if (el) {
-        const t = el.textContent.trim()
-          .replace(/\s*\d{3,}\s*$/, '')  // strip trailing IDs like "4004"
-          .trim();
-        if (t && t.length > 2 && t.length < 120) return t;
-      }
+      if (!el) continue;
+      const t = el.textContent.trim()
+        .replace(/\s*\d{3,}\s*$/, '')  // strip trailing IDs like "4004"
+        .replace(/\s+/g, ' ')
+        .trim();
+      if (t && t.length > 2 && t.length < 120 && !BAD_PATTERNS.test(t)) return t;
     }
-    return getProblemSlug();
+
+    // Reliable fallback: derive title directly from the URL slug
+    return slug ? slugToTitle(slug) : 'Solution';
   }
 
   function getLanguage() {
