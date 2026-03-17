@@ -25,7 +25,7 @@
 
 ## Installation
 
-1. Clone or download this repo
+1. Clone or download this repo([Latest Release V1.0.1](https://github.com/sidharth756/GFG-Hub/releases/tag/v1.0.1(Stable)))
 2. Go to `chrome://extensions/` → enable **Developer mode**
 3. Click **Load unpacked** → select the project folder
 
